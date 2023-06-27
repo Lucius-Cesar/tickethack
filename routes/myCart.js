@@ -23,6 +23,8 @@ router.post("/purchase", (req, res) => {
   MyCart.updateOne({
     id: req.body.myCartId,
     isPurchased: true,
+  }).then((data) => {
+    res.json({ purchasedTrip: data });
   });
 });
 
