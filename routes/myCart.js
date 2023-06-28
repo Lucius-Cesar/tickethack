@@ -3,6 +3,12 @@ var router = express.Router();
 const Trip = require("../models/trips");
 const MyCart = require("../models/myCart");
 
+router.get("/", (req, res) => {
+  MyCart.find().populate('trip').then(data => 
+    res.json({Cart: data}))
+}
+)
+
 router.post("/", (req, res) => {
   const newCart = new MyCart({
     trip: req.body.tripId,
